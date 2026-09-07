@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 电子宠物
 
 macOS 透明置顶桌面电子宠物。播放 Codex v2 精灵图（`192×208` 格，`8×11` 图集，`spriteVersionNumber: 2`）：可拖、会散步、能跟鼠标。
@@ -40,3 +41,7 @@ assets/
 ## 开发规范
 
 见 `.cursor/rules/git-workflow.mdc`：功能走 `feature/*`，修复走 `fix/*`，开发完成后自动 Commit / Push / PR，不直接改 `main`。
+=======
+# electronic-pet
+macOS 电子宠物：透明置顶桌面宠物，播放 Codex v2 精灵图
+>>>>>>> origin/main
