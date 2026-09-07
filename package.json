@@ -1,14 +1,19 @@
 {
   "name": "electronic-pet",
   "productName": "电子宠物",
-  "version": "1.0.0",
-  "description": "macOS 电子宠物：透明置顶桌面宠物，播放 Codex v2 精灵图",
+  "version": "1.1.0",
+  "description": "跨平台电子宠物：运行时 + hatch skill 皮肤模板，支持导入 Codex v2 皮肤包",
   "main": "src/main.js",
   "author": "guanyisheng",
   "license": "MIT",
   "scripts": {
     "start": "electron .",
-    "pack": "electron-builder --mac dir"
+    "pack": "electron-builder --dir",
+    "pack:mac": "electron-builder --mac dir",
+    "pack:win": "electron-builder --win dir",
+    "dist": "electron-builder --mac --win",
+    "dist:mac": "electron-builder --mac",
+    "dist:win": "electron-builder --win"
   },
   "dependencies": {},
   "devDependencies": {
@@ -16,19 +21,34 @@
     "electron-builder": "^26.0.12"
   },
   "build": {
-    "appId": "local.electronic.pet",
+    "appId": "app.electronic.pet",
     "productName": "电子宠物",
-    "mac": {
-      "category": "public.app-category.entertainment",
-      "target": [
-        "dir"
-      ],
-      "icon": "assets/tray.png"
-    },
     "files": [
       "src/**/*",
       "assets/**/*",
       "package.json"
-    ]
+    ],
+    "directories": {
+      "output": "dist"
+    },
+    "mac": {
+      "category": "public.app-category.entertainment",
+      "target": [
+        "dmg",
+        "dir"
+      ],
+      "icon": "assets/tray.png"
+    },
+    "win": {
+      "target": [
+        "nsis",
+        "dir"
+      ],
+      "icon": "assets/tray.png"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
   }
 }

@@ -1,7 +1,0 @@
-{
-  "id": "sample-basic",
-  "displayName": "示例宠物",
-  "description": "Codex v2 精灵图示例，可用于桌面电子宠物。",
-  "spriteVersionNumber": 2,
-  "spritesheetPath": "spritesheet.webp"
-}
