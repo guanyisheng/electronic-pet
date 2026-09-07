@@ -86,7 +86,7 @@ function createTray() {
   const iconPath = path.join(__dirname, "..", "assets", "tray.png");
   const icon = nativeImage.createFromPath(iconPath);
   tray = new Tray(icon.resize({ width: 18, height: 18 }));
-  tray.setToolTip("星澜桌宠");
+  tray.setToolTip("电子宠物");
   rebuildTray();
 }
 
@@ -94,7 +94,7 @@ function rebuildTray() {
   if (!tray) return;
   tray.setContextMenu(
     Menu.buildFromTemplate([
-      { label: "星澜", enabled: false },
+      { label: "电子宠物", enabled: false },
       { type: "separator" },
       {
         label: hidden ? "显示" : "隐藏",

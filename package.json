@@ -1,10 +1,10 @@
 {
-  "name": "xinglan-desktop-pet",
-  "productName": "星澜桌宠",
+  "name": "electronic-pet",
+  "productName": "电子宠物",
   "version": "1.0.0",
-  "description": "星澜（Xinglan）macOS 桌面宠物，使用 Codex v2 精灵图",
+  "description": "macOS 电子宠物：透明置顶桌面宠物，播放 Codex v2 精灵图",
   "main": "src/main.js",
-  "author": "xinglan",
+  "author": "guanyisheng",
   "license": "MIT",
   "scripts": {
     "start": "electron .",
@@ -16,8 +16,8 @@
     "electron-builder": "^26.0.12"
   },
   "build": {
-    "appId": "local.xinglan.desktoppet",
-    "productName": "星澜桌宠",
+    "appId": "local.electronic.pet",
+    "productName": "电子宠物",
     "mac": {
       "category": "public.app-category.entertainment",
       "target": [

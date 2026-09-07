@@ -1,28 +1,42 @@
-# 星澜桌宠
+# 电子宠物
 
-把 Codex 宠物 **星澜（xinglan-basic）** 做成 macOS 桌面宠物：透明无边框、始终置顶、可拖、会自己在屏幕底边散步。
+macOS 透明置顶桌面电子宠物。播放 Codex v2 精灵图（`192×208` 格，`8×11` 图集，`spriteVersionNumber: 2`）：可拖、会散步、能跟鼠标。
+
+MIT 开源。
 
 ## 启动
 
 ```bash
-cd "/Users/guanyisheng/Desktop/代码项目/项目/私密聊天/config/pet"
 npm install
 npm start
 ```
 
-也可以双击 `启动星澜.command`。
+或双击 `启动电子宠物.command`。
 
-菜单栏托盘图标可以切换：
+托盘可切换：自己散步 / 跟着鼠标 / 待在原地，以及挥手、跳跃、大小。
 
-- 自己散步 / 跟着鼠标 / 待在原地
-- 挥手、跳跃、等待、思考
-- 小 / 中 / 大
-
-窗口上：
+窗口操作：
 
 - 单击：挥手
 - 双击：跳跃
 - 拖到空中松开：落地
 - 右键：快捷菜单
 
-精灵图来自 `~/.codex/pets/xinglan-basic`，单元格为 `192x208`，11 行动画（idle、左右走、挥手、跳、失败、等待、工作、审阅，以及 16 个看向方向）。
+## 资源
+
+```text
+assets/
+  pet.json
+  spritesheet.webp   # 1536×2288
+  tray.png
+```
+
+把你自己的 Codex v2 宠物图集替换进 `assets/` 即可换皮。做新宠物可用仓库内 skill：
+
+```text
+.cursor/skills/hatch-desktop-pet/
+```
+
+## 开发规范
+
+见 `.cursor/rules/git-workflow.mdc`：功能走 `feature/*`，修复走 `fix/*`，开发完成后自动 Commit / Push / PR，不直接改 `main`。
