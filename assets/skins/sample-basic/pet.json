@@ -1,0 +1,10 @@
+{
+  "format": "electronic-pet-skin",
+  "formatVersion": 1,
+  "id": "sample-basic",
+  "displayName": "示例宠物",
+  "description": "Codex v2 精灵图示例皮肤，可用 skill 生成后导入替换。",
+  "spriteVersionNumber": 2,
+  "spritesheetPath": "spritesheet.webp",
+  "trayPath": "tray.png"
+}

@@ -21,7 +21,6 @@ const LOOK_ANGLES = [
 const canvas = document.getElementById("pet");
 const ctx = canvas.getContext("2d");
 const sheet = new Image();
-sheet.src = "../../assets/spritesheet.webp";
 
 const world = {
   x: 0,
@@ -51,7 +50,18 @@ const state = {
   lastTs: 0,
   busy: false,
   lastSync: 0,
+  skinId: "",
+  sheetReady: false,
 };
+
+function applySheetUrl(url) {
+  if (!url) return;
+  state.sheetReady = false;
+  sheet.onload = () => {
+    state.sheetReady = true;
+  };
+  sheet.src = url;
+}
 
 function petSize() {
   return {
@@ -98,7 +108,7 @@ function resizeCanvas() {
 
 function drawFrame() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  if (!sheet.complete) return;
+  if (!state.sheetReady || !sheet.complete) return;
 
   const dest = world.overlay
     ? {
@@ -151,6 +161,10 @@ async function syncWorld(force = false) {
   state.scale = snapshot.scale;
   world.cursor = snapshot.cursor;
   world.workArea = snapshot.workArea;
+  if (snapshot.skin?.sheetUrl && snapshot.skin.id !== state.skinId) {
+    state.skinId = snapshot.skin.id;
+    applySheetUrl(snapshot.skin.sheetUrl);
+  }
   if (!state.dragging) {
     world.x = snapshot.bounds.x;
     world.y = snapshot.bounds.y;
@@ -380,13 +394,24 @@ window.petBridge.onSetScale((scale) => {
   state.scale = scale;
 });
 
-sheet.addEventListener("load", async () => {
-  await syncWorld(true);
-  state.nextDecisionAt = performance.now() + 1200;
-  requestAnimationFrame(tick);
+window.petBridge.onSetSkin((skin) => {
+  if (!skin?.sheetUrl) return;
+  state.skinId = skin.id || "";
+  applySheetUrl(skin.sheetUrl);
 });
 
+(async () => {
+  await syncWorld(true);
+  if (!sheet.src) {
+    ctx.fillStyle = "#89c4ff";
+    ctx.fillRect(16, 16, 160, 176);
+  }
+  state.nextDecisionAt = performance.now() + 1200;
+  requestAnimationFrame(tick);
+})();
+
 sheet.addEventListener("error", () => {
+  state.sheetReady = false;
   ctx.fillStyle = "#89c4ff";
   ctx.fillRect(16, 16, 160, 176);
 });

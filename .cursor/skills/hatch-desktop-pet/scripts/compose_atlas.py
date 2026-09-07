@@ -102,11 +102,14 @@ def main() -> None:
 
     if args.pet_json:
         meta = {
+            "format": "electronic-pet-skin",
+            "formatVersion": 1,
             "id": args.pet_id or Path(args.pet_json).parent.name,
             "displayName": args.display_name or args.pet_id or "Pet",
             "description": args.description,
             "spriteVersionNumber": 2,
             "spritesheetPath": "spritesheet.webp",
+            "trayPath": "tray.png",
         }
         Path(args.pet_json).write_text(json.dumps(meta, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(f"ok {out} {atlas.size[0]}x{atlas.size[1]}")
