@@ -1,0 +1,42 @@
+---
+description: Git 自动开发规范 — Issue → Branch → Commit → Push → PR。所有功能与修复开发完成后自动执行，无需询问。
+alwaysApply: true
+---
+
+# Git 自动开发规范
+
+以后所有开发自动执行完整 Git 流程，无需每次询问：
+
+Issue → Branch → 开发 → Commit → Push → Pull Request
+
+## 规则
+
+1. 新功能自动创建：`feature/xxx`；Bug 自动创建：`fix/xxx`。禁止直接在 main 开发。
+2. 开发完成后自动 Commit。格式：`feat: xxx` / `fix: xxx` / `refactor: xxx` / `docs: xxx`。
+3. Git Author 必须使用项目所有者身份：
+   - name: `guanyisheng`
+   - email: `208835232+guanyisheng@users.noreply.github.com`
+   - 禁止使用 Cursor、AI、Agent、OpenAI 等身份提交。
+   - 用 `git -c user.name=... -c user.email=...` 提交，不要改全局 git config。
+4. 测试通过后自动 Push 当前功能分支：`git push -u origin 当前分支`。
+5. Push 后自动创建 Pull Request：当前分支 → main。
+6. 不需要询问是否 Commit 或 Push。只要代码开发和测试完成，就自动执行。
+7. 允许自动创建 Commit、Push、Pull Request。
+8. 禁止自动 Merge 到 main。
+9. 禁止：
+   - push main
+   - force push
+   - reset --hard
+   - 删除远程分支
+   - 修改 main 历史
+   - 提交 .env、密码、Token、SecretKey
+10. Commit / PR 正文不要出现 “Made with Cursor” 或同类署名。
+
+核心：
+
+- Cursor = 开发工具
+- guanyisheng = Git Author
+- feature / fix 分支 = 开发环境
+- main = 稳定版本
+
+以后完成一个功能或 Bug 后，自动提交、自动推送、自动创建 PR，不需要等待确认。
