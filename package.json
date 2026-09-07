@@ -1,0 +1,34 @@
+{
+  "name": "xinglan-desktop-pet",
+  "productName": "星澜桌宠",
+  "version": "1.0.0",
+  "description": "星澜（Xinglan）macOS 桌面宠物，使用 Codex v2 精灵图",
+  "main": "src/main.js",
+  "author": "xinglan",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "pack": "electron-builder --mac dir"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "electron": "^35.1.5",
+    "electron-builder": "^26.0.12"
+  },
+  "build": {
+    "appId": "local.xinglan.desktoppet",
+    "productName": "星澜桌宠",
+    "mac": {
+      "category": "public.app-category.entertainment",
+      "target": [
+        "dir"
+      ],
+      "icon": "assets/tray.png"
+    },
+    "files": [
+      "src/**/*",
+      "assets/**/*",
+      "package.json"
+    ]
+  }
+}
